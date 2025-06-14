@@ -53,3 +53,4 @@ jobs:
         env:
           PYTEST_ADDOPTS: "-vv --durations=20"
           DIFF_AGAINST: HEAD
+          PYTEST_XDIST_AUTO_NUM_WORKERS: 0
