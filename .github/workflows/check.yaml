@@ -38,11 +38,12 @@ jobs:
       - name: Install the latest version of uv
         uses: astral-sh/setup-uv@v6
         with:
-          enable-cache: true
+          version: "0.7.13"
+          enable-cache: false
           cache-dependency-glob: "pyproject.toml"
           github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Install tox
-        run: uv tool install --python-preference only-managed --python 3.13 tox --with tox-uv
+        run: uv tool install --python-preference only-managed --python 3.13 tox --with uv==0.7.13 --with tox-uv
       - name: Install Python
         if: (startsWith(matrix.env, '3.') || startsWith(matrix.env, 'pypy-')) && matrix.env != '3.13'
         run: uv python install --python-preference only-managed ${{ matrix.env }}
