@@ -20,15 +20,12 @@ pass_env = [ "DIFF_AGAINST", "PYTEST_*" ]
 set_env.COVERAGE_FILE = "{work_dir}/.coverage.{env_name}"
 commands = [
   [
-    "python",
-    "-m",
     "pytest",
     "{tty:--color=yes}",
     { replace = "posargs", extend = true, default = [
       "--cov",
       "{env_site_packages_dir}{/}pipdeptree",
-      "--cov",
-      "{tox_root}{/}tests",
+      "--cov=tests",
       "--cov-config=pyproject.toml",
       "--no-cov-on-fail",
       "--cov-report",
